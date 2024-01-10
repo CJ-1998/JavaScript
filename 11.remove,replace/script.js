@@ -1,6 +1,5 @@
 // remove, replace 알아보기 
 
-
 const listParent = document.querySelector('ul');
 const list = document.querySelectorAll('li');
 
