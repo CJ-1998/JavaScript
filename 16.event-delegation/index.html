@@ -1,0 +1,36 @@
+<!-- event delegation 알아보기 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event Delegation</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <div id="buttons">
+        <button class="buttonClass">Click me</button>
+        <button class="buttonClass">Click me</button>
+    </div>
+
+    <script>
+        // const buttons = document.getElementsByClassName("buttonClass");
+        // for (const button of buttons) {
+        //     button.addEventListener("click", () => alert('clicked'));
+        // }
+
+        const buttons = document.getElementById("buttons");
+        buttons.addEventListener("click", () => alert('clicked'));
+
+        let buttonList = document.querySelector('#buttons');
+        let button = document.createElement('button');
+
+        button.setAttribute('class', 'buttonClass');
+        button.innerText = 'Click me';
+        buttonList.appendChild(button);
+        
+    </script>
+</body>
+
+</html>
