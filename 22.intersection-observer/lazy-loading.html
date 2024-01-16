@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lazy Loading</title>
+    <style>
+        img {
+            width: 400px;
+            height: 300px;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src='https://via.placeholder.com/400x300'  
+        data-src='https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300'>
+
+    <img src='https://via.placeholder.com/400x300'
+        data-src='https://ik.imagekit.io/demo/img/image5.jpeg?tr=w-400,h-300'>
+
+    <img src='https://via.placeholder.com/400x300'
+        data-src="https://ik.imagekit.io/demo/img/image6.jpeg?tr=w-400,h-300">
+
+    <img src='https://via.placeholder.com/400x300'
+        data-src='https://ik.imagekit.io/demo/img/image7.jpeg?tr=w-400,h-300'>
+
+    <script>
+        // Intersection Observer 인스턴스
+        const observer = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                // 루트 요소와 타겟 요소가 교차하면 dataset에 있는 url을 src 에 넣어주기.
+                if (entry.isIntersecting) {
+                    entry.target.src = entry.target.dataset.src
+
+                    // Lazy Loading 후에는 unobserve 해주기.
+                    observer.unobserve(entry.target)
+                }
+            })
+        }, { threshold: 1 })
+        // 타겟 요소의 100%가 루트 요소와 겹치면 콜백을 실행.
+
+        // 모든 img들을 관찰하기
+        const imgs = document.querySelectorAll('img')
+        imgs.forEach((img) => {
+            observer.observe(img)
+        })
+    </script>
+
+</body>
+
+</html>
