@@ -102,7 +102,7 @@ console.log(Person2.multipleNumbers(2, 9));
 console.log(new Person2('haha', 'hoho', 1-2));
 
 
-
+// inheritence 문법
 class Person3 {
     constructor(name, email) {
         this.name = name;
