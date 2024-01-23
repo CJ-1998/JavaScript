@@ -38,6 +38,7 @@ const promise3 = new Promise((resolve, reject) => {
     setTimeout(resolve, 3000, 'foo');
 });
 
+// promise all, race
 Promise.all([promise1, promise2, promise3]).then((values) => {
     console.log(values);
 });
@@ -59,6 +60,7 @@ Promise.race([promise4, promise5]).then((value) => {
 // Expected output: "two"
 
 
+// 위의 promise에서 한 것을 async/await으로 
 async function makeRequest() {
     try {
         const response1 = await fetch('https://jsonplaceholder.typicode.com/todos/1');
